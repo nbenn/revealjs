@@ -97,28 +97,22 @@ $else$
      }
 $endif$
     .reveal table {
-      border-width: 1px;
       border-spacing: 2px;
-      border-style: dotted;
       border-color: gray;
       border-collapse: collapse;
       font-size: 0.7em;
     }
 
     .reveal table th {
-      border-width: 1px;
       padding-left: 10px;
       padding-right: 25px;
       font-weight: bold;
-      border-style: dotted;
       border-color: gray;
     }
 
     .reveal table td {
-      border-width: 1px;
       padding-left: 10px;
       padding-right: 25px;
-      border-style: dotted;
       border-color: gray;
     }
   </style>
@@ -189,6 +183,9 @@ $if(plugin-chalkboard)$
 $endif$
 $if(plugin-customcontrols)$
   <script src="$revealjs-url$/plugin/customcontrols/plugin.js"></script>
+$endif$
+$if(plugin-highlight)$
+  <script src="$revealjs-url$/plugin/highlight/highlight.js"></script>
 $endif$
   
   <script>
@@ -611,6 +608,9 @@ $if(plugin-chalkboard)$
 $endif$
 $if(plugin-customcontrols)$
           RevealCustomControls,
+$endif$
+$if(plugin-highlight)$
+          RevealHighlight,
 $endif$
         ]
       });

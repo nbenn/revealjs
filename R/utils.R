@@ -46,3 +46,7 @@ process_reveal_option <- function(option, value) {
   }
   pandoc_variable_arg(option, value)
 }
+
+pandc_syntax_defintion <- function(def) {
+  c("--syntax-definition", def)
+}

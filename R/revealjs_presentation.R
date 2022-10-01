@@ -145,6 +145,7 @@ revealjs_presentation <- function(incremental = FALSE,
                                   reveal_options = NULL,
                                   reveal_plugins = NULL,
                                   highlight = "default",
+                                  syntax_definition = NULL,
                                   mathjax = "default",
                                   template = "default",
                                   css = NULL,
@@ -240,8 +241,14 @@ revealjs_presentation <- function(incremental = FALSE,
       stop("Using reveal_plugins requires self_contained: false")
     }
 
+    if ("highlight" %in% reveal_plugins) {
+      highlight <- NULL
+    }
+
     # validate specified plugins are supported
-    supported_plugins <- c("notes", "search", "zoom", "chalkboard", "menu")
+    supported_plugins <- c(
+      "notes", "search", "zoom", "chalkboard", "menu", "highlight"
+    )
     invalid_plugins <- setdiff(reveal_plugins, supported_plugins)
     if (length(invalid_plugins) > 0) {
       stop("The following plugin(s) are not supported: ",
@@ -307,6 +314,10 @@ revealjs_presentation <- function(incremental = FALSE,
 
     # highlight
     args <- c(args, pandoc_highlight_args(highlight, default = "pygments"))
+
+    if (!is.null(syntax_definition)) {
+      args <- c(args, pandc_syntax_defintion(syntax_definition))
+    }
 
     # return additional args
     args
